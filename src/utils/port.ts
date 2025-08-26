@@ -15,9 +15,9 @@ export async function isPortInUse(port: number): Promise<boolean> {
 export function killProcessOnPort(port: number) {
   try {
     if (process.platform === "win32") {
-      execSync(
-        `FOR /F "tokens=5" %a in ('netstat -ano ^| findstr :${port}') do taskkill /F /PID %a`,
-      );
+      // execSync(
+      //   `FOR /F "tokens=5" %a in ('netstat -ano ^| findstr :${port}') do taskkill /F /PID %a`,
+      // );
     } else {
       execSync(`lsof -ti:${port} | xargs kill -9`);
     }
